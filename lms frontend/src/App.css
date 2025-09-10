@@ -1,0 +1,231 @@
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+
+
+
+.accordion-button {
+  background-color: rgb(243, 243, 248) !important;
+  color: black !important;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.accordion-button:hover {
+  background-color: #0047ab !important; /* slightly darker blue on hover */
+  color: white !important;
+}
+
+
+.expand-arrow {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  margin-left: 50px;
+  border: solid #222;
+  border-width: 0 2px 2px 0;
+  padding: 3px;
+  transition: transform 0.2s;
+  transform: rotate(45deg);
+}
+.expand-arrow.expanded {
+  transform: rotate(-135deg);
+}
+
+
+.employee-competency-details {
+  padding: 20px;
+  font-family: 'Segoe UI', Arial, sans-serif;
+  background-color: #f8f9fa;
+  border-radius: 6px;
+  text-align: left; /* valid */
+}
+
+
+.header {
+  display: flex;
+  justify-content: space-between; /* pushes content apart */
+  align-items: center;            /* vertically center items */
+}
+
+.header h1 {
+  margin: 0;                      /* remove default margin for better alignment */
+  font-size: 22px;
+}
+
+.header .btn-primary {
+  margin-left: auto;              /* ensures it stays on far right */
+}
+
+
+.btn.btn-primary {
+  padding: 8px 14px;
+  font-size: 14px;
+  background-color: #007bff;
+  border: none;
+  border-radius: 4px;
+  width:300px
+}
+
+.employee-info {
+  background: #fff;
+  padding: 15px;
+  border-radius: 6px;
+  box-shadow: 0px 2px 5px rgba(0,0,0,0.08);
+  margin-bottom: 20px;
+}
+
+.info-item {
+  margin-bottom: 8px;
+  font-size: 14px;
+}
+
+.info-item strong {
+  color: #555;
+}
+
+/* Table Styling */
+.competency-items {
+  overflow-x: auto;
+}
+
+.items-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: #fff;
+  border-radius: 6px;
+  overflow: hidden;
+  box-shadow: 0px 2px 6px rgba(0,0,0,0.1);
+}
+
+.items-table th, .items-table td {
+  padding: 10px 12px;
+  text-align: left;
+  border-bottom: 1px solid #e5e5e5;
+  font-size: 14px;
+}
+
+.items-table th {
+  background-color: #f1f3f6;
+  font-weight: bold;
+  color: #555;
+}
+
+.items-table tbody tr:hover {
+  background-color: #f9f9f9;
+}
+
+/* Status Badge Styles */
+.status-badge {
+  display: inline-block;
+  padding: 4px 10px;
+  border-radius: 12px;
+  font-size: 12px;
+  font-weight: 500;
+  text-transform: capitalize;
+}
+
+.status-badge.active {
+  background-color: #d1ecf1;
+  color: #0c5460;
+}
+
+.status-badge.completed {
+  background-color: #d4edda;
+  color: #155724;
+}
+
+.status-badge.expired {
+  background-color: #f8d7da;
+  color: #721c24;
+}
+
+/* Action Buttons */
+.status-actions button {
+  margin-right: 6px;
+  padding: 4px 8px;
+  font-size: 12px;
+  border-radius: 4px;
+}
+
+.status-actions .btn-success {
+  background-color: #28a745;
+  border: none;
+}
+
+.status-actions .btn-danger {
+  background-color: #dc3545;
+  border: none;
+}
+
+.status-actions .btn-primary {
+  background-color: #007bff;
+  border: none;
+}
+
+/* Loading & Error States */
+.loading,
+.error,
+.no-items {
+  background: #fff;
+  padding: 15px;
+  text-align: center;
+  border-radius: 4px;
+  color: #666;
+  font-size: 14px;
+}
+
+.error {
+  background-color: #f8d7da;
+  color: #721c24;
+}
+
+.no-items {
+  background-color: #fdfdfe;
+}
+.radio-dot {
+  display: inline-block;
+  width: 16px; height: 16px;
+  border-radius: 50%;
+  border: 2px solid #bbb;
+  background: #fff;
+}
+.radio-dot.checked {
+  background: #28a745;
+  border: 2px solid #18331d;
+}

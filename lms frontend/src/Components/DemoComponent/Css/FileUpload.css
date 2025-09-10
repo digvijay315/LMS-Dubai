@@ -1,0 +1,70 @@
+.file-upload-container {
+    margin: 20px;
+    padding: 20px;
+    border: 2px dashed #007bff;
+    border-radius: 10px;
+    text-align: center;
+    background-color: #f9f9f9;
+  }
+  
+  .dropzone {
+    padding: 20px;
+    cursor: pointer;
+    color: #007bff;
+    background-color: #f1f1f1;
+    border-radius: 8px;
+    transition: background-color 0.2s ease;
+  }
+  
+  .dropzone:hover {
+    background-color: #e2e2e2;
+  }
+  
+  .files-list {
+    margin-top: 20px;
+  }
+  
+  .file-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    border: 1px solid #ddd;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    background-color: #fff;
+  }
+  
+  .file-details {
+    display: flex;
+    align-items: center;
+  }
+  
+  .file-details span {
+    font-weight: bold;
+    margin-right: 10px;
+  }
+  
+  .delete-icon {
+    cursor: pointer;
+    color: red;
+    font-size: 1.2rem;
+  }
+  
+  .delete-icon:hover {
+    color: darkred;
+  }
+  
+  button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+  }
+  
+  button:hover {
+    background-color: #0056b3;
+  }

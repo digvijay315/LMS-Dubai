@@ -1,0 +1,49 @@
+body, html, #root, .App {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+  }
+  
+  /* .app-container {
+    display: flex;  
+    height: 100vh; 
+  } */
+  
+  .sidebar {
+    width: 25%;
+    background-color: #333;
+    color: white;
+    height: 100vh;
+  }
+  
+  .list-group-item {
+    background-color: #333;
+    border: none;
+    color: white;
+  }
+  
+  .list-group-item:hover {
+    background-color: #444;
+  }
+  
+  .collapse a {
+    background-color: #444;
+  }
+  
+  hr {
+    border-color: #555;
+  }
+  
+  .video-container {
+    flex-grow: 1;  /* Makes the video container take the remaining space */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #f8f9fa;
+  }
+  
+  /* iframe {
+    max-width: 100%;
+    max-height: 100%;
+  } */
+  

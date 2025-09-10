@@ -1,0 +1,17 @@
+.textbody{
+    width: 100%;
+    margin: 0px auto;
+    border-radius: 5px !important;
+}
+.ql-toolbar.ql-snow{
+    border-radius: 5px !important;
+}
+.ql-editor{
+    border-radius: 5px !important; 
+    height: 40vh;
+}
+svg{
+    /* font-size: 10px !important; */
+    width: 1.5rem;
+    height: 1.5rem;
+}

@@ -1,0 +1,400 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: "Montserrat", sans-serif;
+}
+
+.left-Dashboard{
+    /* border: #000 solid 2px; */
+    height: 94vh;
+    position: fixed;
+    background-color: #ffffff;
+    border-radius: 10px;
+    padding: 0 10px;
+    margin-bottom: 1.5rem;
+    width: 22%;
+}
+.left-Dashboard .dashboard-list{
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+.left-Dashboard .title-div{
+    padding-left: 1rem;
+}
+.left-Dashboard .list-options{
+    height: 500px;
+    overflow-y: scroll;
+}
+.left-Dashboard .list-options .accordion{
+    width: 90%;
+    margin: 10px auto;
+}
+.list-options .accordion .accordion-item ul li{
+    cursor: pointer;
+    font-size: 14px;
+    padding: 5px;
+    transition: all 0.3s ease;
+}
+.list-options .accordion .accordion-item ul li:hover{
+    color: #2E073F;
+    font-weight: 600;
+}
+.list-options .accordion h2 button{
+    font-size: 14px;
+    font-weight: 500;
+    margin: 5px 0;
+    border: none;
+    transition: all 0.3s ease;
+    border: none;
+}
+.list-options .accordion h2 button:hover{
+    background-color: rgba(46, 7, 63, 0.2);
+}
+.list-options .accordion h2 button:focus{
+    background-color: rgba(46, 7, 63, 0.5);
+    color: #ffffff;
+}
+.logout-section #logout-btn{
+    width: 100%;
+    height: 3.5rem;
+    background-color: #2E073F;
+    color: #ffffff;
+    font-size: 20px;
+    border: none;
+    border-radius: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 1.5rem;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    margin-top: 10px;
+}
+/* .logout-section{
+    margin-bottom: 1rem;
+} */
+.logout-section button:hover{
+    background-color: #ffffff;
+    color: #2E073F;
+    font-weight: 500;
+    box-shadow: inset 0 5px 10px rgba(46, 7, 63, 0.5), 0 2px 5px rgba(46, 7, 63, 0.5);
+}
+.main-content-section{
+    width: 76.4%;
+    margin-left: 24%;
+    margin-right: 1.6rem;
+}
+.header-div{
+    width: 100%;
+    height: 6rem;
+    background-color: #ffffff;
+    border-radius: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 2rem;
+    margin-bottom: 1.5rem;
+}
+.right-content{
+    display: flex;
+    justify-content: space-between;
+    width: fit-content;
+    /* border: #000 solid 2px; */
+    width: 550px;
+}
+.right-content button{
+    box-shadow: inset 0 5px 10px rgba(0,0,0,.1), 0 2px 5px rgba(0,0,0,.5);
+    transition: all 0.3s ease;
+    border: none;
+    color: #2E073F;
+    /* width: 3rem; */
+}
+.right-content button:hover{
+    background-color: #2E073F;
+    color: #ffffff;
+    /* border: none; */
+}
+.right-content .head-btn{
+    height: 2.5rem;
+    width: 3rem;
+    background-color: #ffffff;
+    border-radius: 15%;
+    /* border: #000 solid 1px; */
+}
+.head-btn:hover{
+    background-color: #ffffff;
+}
+.form-inline{
+    display: flex;
+    height: 2.5rem;
+}
+.form-inline button{
+    background-color: #2E073F;
+    border: none;
+    color: #ffffff;
+}
+.form-control{
+    margin-right: 10px;
+    border: #2E073F solid 1px;
+}
+.btn-primary{
+    margin-top: 0;
+    background-color: #ffffff;
+    border: #000 solid 1px;
+    color: #000;
+}
+.left-arrow button{
+    background-color: #ffffff;
+    height: 3rem;
+    width: 3rem;
+    border: #2e073f5b solid 2px;
+    font-size: 20px;
+    cursor: pointer;
+    color: #2E073F;
+}
+.left-arrow button:hover{
+    background-color: #2E073F;
+    color: #ffffff;
+}
+svg{
+    height: 3rem;
+    width: 3rem;
+}
+.header-two{
+    height: 7rem;
+    padding-left: 3rem;
+}
+.title-name h5{
+    font-weight: 600;
+}
+.title-name p a{
+    text-decoration: none;
+    color: #433cc7;
+}
+.title-name p i{
+    margin: 0 10px;
+}
+.title-name p {
+    font-weight: 500;
+    margin-bottom: 0;
+}
+
+.students-courses-div{
+    /* border: #000 solid 2px; */
+    width: 100%;
+    margin-bottom: 1.5rem;
+    display: flex;
+    justify-content: space-between;
+}
+.students-courses-div .divOne{
+    height: 12rem;
+    width: 32%;
+    /* border: #000 solid 2px; */
+    border-radius: 10px;
+    background-color: #ffffff;
+    padding: 1.4rem;
+    transition: all 0.3s ease;
+}
+.students-courses-div .divOne:hover{
+    box-shadow: 5px 5px 12px rgba(46, 7, 63, 0.6);
+    transform: scale(1.02, 1.02);
+}
+.students-courses-div .total-students{
+    background-color: #2E073F;
+    /* background-color: #170a7c; */
+
+}
+.students-courses-div .new-students{
+    background-color: #2e073fc4;
+}
+
+.divOne .upper-div-std, .lower-div-std{
+    color: #ffffff;
+    font-size: 14px;
+}
+.divOne .upper-div-std{
+    display: flex;
+    margin-bottom: 14px;
+}
+.divOne .upper-div-std span i{
+    height: 3.5rem;
+    width: 3.5rem;
+    border: #ffffff solid 1px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 20px;
+    border-radius: 8px;
+    background-color: #2e073f51;
+    margin-right: 1rem;
+}
+.lower-div-std p{
+   line-height: 14px;  
+}
+.lower-div-std .progress{
+    height: 8px;
+    background-color: #661389a8;
+}
+.lower-div-std .progressTwo{
+    background-color: #8e4da9;
+}
+
+.visuals-data-views{
+    height: 25rem;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 1.5rem;
+}
+.avg-registration-div{
+    /* border: #000 solid 2px; */
+    width: 66%;
+    height: 100%;
+    background-color: #ffffff;
+    border-radius: 10px;
+    padding: 1.5rem 2rem;
+}
+.avg-registration-div .title-duration-data{
+    display: flex;
+    justify-content: space-between;
+}
+.avg-registration-div .avg-graph-view img{
+    width: 100%;
+}
+.highest-rated-course{
+    /* border: #000 solid 2px; */
+    width: 32%;
+    height: 100%;
+    background-color: #ffffff;
+    border-radius: 10px;
+    padding: 1.5rem 1rem;
+    /* overflow-x: scroll; */
+    /* position: relative; */
+}
+.title-highest-div{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 8px;
+}
+.title-highest-div button{
+    background-color: rgb(1, 90, 150);
+    border: none;
+    width: 4rem;
+    color: #ffffff;
+}
+.highest-rated-course .table-data-courses{
+    overflow-x: scroll;
+}
+.highest-rated-course .table-data-courses img{
+    height: 2.5rem;
+    width: 2.5rem;
+    margin-right: 10px;
+}
+.highest-rated-course .table-data-courses p{
+    font-size: 12px;
+    /* line-height: 5px; */
+    margin-bottom: 0;
+}
+.table-data-courses table thead th{
+    padding: 12px;
+    font-weight: 500;
+    border-bottom: #c5c5c5 solid 0.5px;
+}
+.table-data-courses table tbody td{
+    padding: 11px 0;
+    border-bottom: #c5c5c5 solid 0.5px;
+}
+.table-data-courses .img-content-div{
+    display: flex;
+}
+
+.others-popular-divs{
+    /* border: #000 solid 2px; */
+    width: 100%;
+    height: 25rem;
+    display: flex;
+    justify-content: space-between;
+}
+.others-popular-divs .activity-div{
+    /* border: #000 solid 2px; */
+    width: 32%;
+    height: 100%;
+    border-radius: 10px;
+    background-color: #ffffff;
+    padding: 1.5rem 1rem;
+}
+.activity-div .differents-courses{
+    /* border: #000 solid 2px; */
+    height: 90%;
+    overflow-y: scroll;
+}
+.differents-courses .courses{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 1rem 0;
+}
+.courses .courses-title-div{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.courses .courses-title-div h6{
+    margin-bottom: 0;
+}
+.courses .courses-title-div p{
+    margin-bottom: 0;
+    font-size: 12px;
+}
+.courses .courses-title-div i{
+    height: 3.5rem;
+    width: 3.5rem;
+    /* border: #ffffff solid 1px; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 20px;
+    border-radius: 8px;
+    background-color: #2e073f34;
+    margin-right: 1rem;
+    color: #2E073F;
+}
+.courses .courses-title-div h6 a{
+    text-decoration: none;
+    color: #000;
+}
+.courses .forward-btn button{
+    height: 1.7rem;
+    width: 1.7rem;
+    border: none;
+    background-color: #2e073f34;
+    font-size: 13px;margin-right: 10px;
+}
+.course-activity-div .img-div img{
+    width: 100%;
+    height: 20rem;
+}
+.recent-support-div .userDivs{
+    display: flex;
+    margin: 1.5rem 0;
+    /* justify-content: space-evenly; */
+}
+.recent-support-div .userDivs img{
+    height: 3.5rem;
+    width: 3.5rem;
+    margin-right: 1rem;
+}
+.recent-support-div .userDivs h6{
+    margin-bottom: 0;
+    font-weight: 600;
+}
+.recent-support-div .userDivs p{
+    margin-bottom: 0;
+    font-size: 12px;
+}
+.accordion-button.no-arrow::after{
+    display: none;
+}
+

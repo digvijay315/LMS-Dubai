@@ -1,0 +1,31 @@
+.all-users-list{
+    width: 100%;
+    /* height: 500px; */
+    background-color: #ffffff;
+    border-radius: 10px;
+    padding: 2rem 2rem;
+}
+.all-users-list table thead th{
+    padding-block: 1rem;
+    border-bottom: rgba(0, 0, 0, 0.2) solid 1px;
+}
+.all-users-list table tbody td{
+    padding-bottom: 10px;
+}
+/* table tbody button{
+    background-color: rgb(136, 11, 11);
+    width: 6rem;
+    height: 2rem;
+    color: #ffffff;
+    font-weight: 500;
+    border: none;
+    box-shadow: inset 0 5px 10px rgba(46, 7, 63, 0.5), 0 2px 5px rgba(46, 7, 63, 0.5);
+    border-radius: 1rem;
+    transition: all 0.2s ease;
+}
+table tbody button:hover{
+    box-shadow: inset 0 5px 10px rgba(46, 7, 63, 0.5), 0 2px 5px rgba(46, 7, 63, 0.5);
+    color: #ffffff;
+    font-weight: 500;
+    background-color: red;
+} */

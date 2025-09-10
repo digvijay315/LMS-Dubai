@@ -1,0 +1,301 @@
+.profile-section{
+    height: 600px;
+    display: flex;
+    justify-content: space-between;
+}
+.main-profile-div{
+    width: 32%;
+    height: 100%;
+    border-radius: 10px;
+    background-color: #ffffff;
+}
+.profile-content-div{
+    width: 66%;
+    height: 100%;
+    border-radius: 10px;
+    background-color: #ffffff;
+    padding: 1.5rem;
+}
+.profile-image-div{
+    position: relative;
+    /* border: #000 solid 2px; */
+}
+.profile-image-div img{
+    width: 100%;
+    height: 9rem;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+.profile-picture{
+    position: absolute;
+    bottom: -4rem;
+    left: 7rem;
+    /* margin: 0 auto; */
+    border-radius: 50%;
+    border: #ffffff solid 10px;
+}
+.profile-pic{
+    position: relative;
+    border-radius: 50%;
+    width: 8rem;
+    height: 8rem;
+}
+.profile-pic img{
+    border-radius: 50%;
+    width: 8rem;
+    height: 8rem;
+    position: relative;
+}
+.profile-pic input{
+    position: absolute;
+    z-index: 999;
+    height: 8rem;
+    width: 8rem;
+    opacity: 0;
+}
+.profile-pic label{
+    position: absolute;
+    top: 10px;
+    font-size: 1.5rem;
+    top: 5rem;
+    left: 3.2rem;
+    color: #ffffff;
+}
+.info-div{
+    margin: 3rem 1.5rem 1.5rem 1.5rem;
+    text-align: center;
+    border-bottom: rgb(205, 204, 204) solid 1px;
+    padding: 14px 0;
+}
+.about-div{
+    margin: 0 1.5rem;
+    border-bottom: rgb(205, 204, 204) solid 1px;
+    padding-bottom: 1rem;
+}
+.about-div p{
+    font-size: 14px;
+    font-weight: 500;
+}
+.multiple-divs-option{
+    /* border: #000 solid 2px; */
+    display: flex;
+    justify-content: space-between;
+    height: 40%;
+}
+.multiple-divs-option .item-div{
+    width: 10rem;
+    height: 12rem;
+    border: #170a7c  solid 1px;
+    border-radius: 1rem;
+    padding: 1.5rem 1.5rem;
+    transition: all 0.3s ease;
+}
+.multiple-divs-option .item-div:hover{
+    border: none;
+    box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.2), -2px -2px 8px rgba(0, 0, 0, 0.2);
+    transform: scale(1.01);
+}
+.item-div .item-content-div img{
+    width: 3rem;
+    height: 3rem;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+    padding: 3px;
+    border-radius: 5px;
+    background-color: rgba(46, 7, 63, 0.09);
+    margin-bottom: 1rem;
+}
+.item-div .item-content-div p{
+    line-height: 1.2rem;
+    font-weight: 500;
+    opacity: 0.8;
+    font-size: 18px;
+    margin-bottom: 8px;
+}
+.item-div .item-content-div h2{
+    font-weight: 600;
+    color: #170a7c;
+}
+.average-learning{
+    border: #170a7c solid 1px;
+    height: 60%;
+    border-radius: 1rem;
+    padding: 1.2rem;
+}
+.heading-average-div{
+    display: flex;
+    justify-content: space-between;
+}
+
+
+.light-mone{
+    background-color: rgba(23, 4, 52, 0.1);
+    padding: 20px;
+    height: 120vh;
+}
+.night-mode{
+    background-color: rgba(27, 3, 51, 0.8);
+    padding: 20px;
+    height: 120vh;
+    color: #ffff;
+}
+.light{
+    /* background-color: rgba(23, 4, 52, 0.6); */
+    background-color: #ffffff;
+    color: #170a7c;
+}
+.night{
+    background-color: rgba(23, 4, 52, 0.8);
+    color:#ffff;
+}
+.lightbox{
+    background-color: #ffffff;
+    border: #170a7c  solid 1px;
+}
+.nightbox{
+    background-color: rgba(23, 4, 52, 0.8);
+    border: #f7f7fa  solid 1px;
+
+}
+.info-text{
+    color: #170a7c;
+    font-weight: 600;
+}
+.info-text1{
+  
+    font-size:15px;
+}
+.about-text{
+       margin-bottom: 15px;
+}
+
+.accordion-button {
+    background-color: red;
+}
+
+.profile-section{
+    height: 600px;
+    display: flex;
+    justify-content: space-between;
+}
+.main-profile-div{
+    width: 32%;
+    height: 100%;
+    border-radius: 10px;
+
+}
+.profile-content-div{
+    width: 66%;
+    height: 100%;
+    border-radius: 10px;
+    /* background-color: #ffffff; */
+    padding: 1.5rem;
+}
+.profile-image-div{
+    position: relative;
+    /* border: #000 solid 2px; */
+}
+.profile-image-div img{
+    width: 100%;
+    height: 9rem;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+.profile-picture{
+    position: absolute;
+    bottom: -2rem;
+    left: 7rem;
+    /* margin: 0 auto; */
+    border-radius: 50%;
+    border: #ffffff solid 10px;
+}
+.profile-pic{
+    position: relative;
+    border-radius: 50%;
+    width: 8rem;
+    height: 8rem;
+}
+.profile-pic img{
+    border-radius: 50%;
+    width: 8rem;
+    height: 8rem;
+    position: relative;
+}
+.profile-pic input{
+    position: absolute;
+    z-index: 999;
+    height: 8rem;
+    width: 8rem;
+    opacity: 0;
+}
+.profile-pic label{
+    position: absolute;
+    top: 10px;
+    font-size: 1.5rem;
+    top: 5rem;
+    left: 3.2rem;
+    color: #ffffff;
+}
+.info-div{
+    margin: 3rem 1.5rem 1.5rem 1.5rem;
+    text-align: center;
+    border-bottom: rgb(205, 204, 204) solid 1px;
+    padding: 14px 0;
+}
+.about-div{
+    margin: 0 1.5rem;
+    border-bottom: rgb(205, 204, 204) solid 1px;
+    padding-bottom: 1rem;
+}
+.about-div p{
+    font-size: 14px;
+    font-weight: 500;
+}
+.multiple-divs-option{
+    /* border: #000 solid 2px; */
+    display: flex;
+    justify-content: space-between;
+    height: 40%;
+}
+.multiple-divs-option .item-div{
+    width: 10rem;
+    height: 12rem;
+ 
+    border-radius: 1rem;
+    padding: 1.5rem 1.5rem;
+    transition: all 0.3s ease;
+}
+.multiple-divs-option .item-div:hover{
+    border: none;
+    box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.2), -2px -2px 8px rgba(0, 0, 0, 0.2);
+    transform: scale(1.01);
+}
+.item-div .item-content-div img{
+    width: 3rem;
+    height: 3rem;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+    padding: 3px;
+    border-radius: 5px;
+    background-color: rgba(46, 7, 63, 0.09);
+    margin-bottom: 1rem;
+}
+.item-div .item-content-div p{
+    line-height: 1.2rem;
+    font-weight: 500;
+    opacity: 0.8;
+    font-size: 18px;
+    margin-bottom: 8px;
+}
+.item-div .item-content-div h2{
+    font-weight: 600;
+    color: #170a7c;
+}
+.average-learning{
+  
+    height: 60%;
+    border-radius: 1rem;
+    padding: 1.2rem;
+}
+.heading-average-div{
+    display: flex;
+    justify-content: space-between;
+}

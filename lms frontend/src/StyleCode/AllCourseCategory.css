@@ -1,0 +1,124 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: "Montserrat", sans-serif;
+}
+
+.main-content-section{
+    width: 76.4;
+}
+.header-div{
+    width: 100%;
+    height: 6rem;
+    background-color: #ffffff;
+    border-radius: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 2rem;
+    margin-bottom: 1.5rem;
+}
+.category-btn button{
+    border: none;
+    height: 3rem;
+    width: 10rem;
+    background-color: #7A1CAC;
+    color: #ffffff;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+.category-btn button:hover{
+    background-color: #7a1cacc6;
+}
+.courses-list-section{
+    width: 100%;
+    /* height: 500px; */
+    background-color: #ffffff;
+    border-radius: 10px;
+    padding: 2rem 5rem;
+}
+.courses-list-section table tbody td button{
+    height: 2rem;
+    width: 2rem;
+    margin-right: 3px;
+    border: none;
+    border-radius: 50%;
+    color: #ffffff;
+}
+.courses-list-section table tbody td .edit-btn{
+    background-color: #2195f3cc;
+}
+.courses-list-section table tbody td .delete-btn{
+    background-color: rgba(255, 0, 0, 0.715);
+}
+.courses-list-section table tbody td{
+    padding: 10px;
+}
+.courses-list-section table tr{
+    border-top: rgb(184, 184, 184) solid 1px;
+}
+.courses-list-section table tr:hover{
+  background-color: rgba(46, 7, 63, 0.1);
+}
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 30px;
+    margin-top: 20px;
+    margin-left: 10px;
+  }
+  
+  .switch input { 
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+  
+  .slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    -webkit-transition: .4s;
+    transition: .4s;
+  }
+  
+  .slider:before {
+    position: absolute;
+    content: "";
+    height: 26px;
+    width: 26px;
+    left: 4px;
+    bottom: 2px;
+    background-color: white;
+    -webkit-transition: .4s;
+    transition: .4s;
+  }
+  
+  input:checked + .slider {
+    background-color: #2196F3;
+  }
+  
+  input:focus + .slider {
+    box-shadow: 0 0 1px #2196F3;
+  }
+  
+  input:checked + .slider:before {
+    -webkit-transform: translateX(26px);
+    -ms-transform: translateX(26px);
+    transform: translateX(26px);
+  }
+  
+  /* Rounded sliders */
+  .slider.round {
+    border-radius: 30px;
+  }
+  
+  .slider.round:before {
+    border-radius: 50%;
+  }

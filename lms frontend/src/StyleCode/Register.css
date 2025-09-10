@@ -1,0 +1,119 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+.parent-container{
+    width: 100%;
+    height: 100vh;
+    /* border: #000 solid 2px; */
+    padding: 1rem 2rem;
+}
+.container-div{
+    width: 100%;
+    height: 10rem;
+    border-radius: 1.5rem;
+    /* border: #000 solid 2px; */
+    background-color: #2E073F;
+    position: relative;
+    margin-bottom: 2rem;
+}
+.container-div div{
+    height: 70px;
+    width: 120px;
+    background-color: #2E073F;
+}
+.container-div .left-div{
+    position: absolute;
+    border-bottom-left-radius: 100px;
+    border-bottom-right-radius: 100px;
+    right: 4rem;
+    border: #ffffff solid 10px;
+    box-shadow: -20px 10px 90px rgba(248, 245, 245, 0.4);
+}
+.container-div .right-div{
+    position: absolute;
+    border-top-left-radius: 100px;
+    border-top-right-radius: 100px;
+    bottom: 0;
+    left: 4rem;
+    border: #ffffff solid 10px;
+    box-shadow: 20px 10px 90px rgba(248, 245, 245, 0.4);
+}
+.heading-div{
+    position: absolute;
+    left: 42%;
+    top: 30%;
+}
+.heading-div h1{
+    color: #ffffff;
+    font-size: 3rem;
+    /* font-weight: 600; */
+}
+.register-container{
+    width: 60%;
+    height: 28rem;
+    margin: auto;
+    border:  #000 solid 1px;
+    border-radius: 1.5rem;
+    box-shadow: 10px 10px 15px rgba(46, 7, 63, 0.2);
+    display: flex;
+}
+.register-container .left-side-div{
+    width: 40%;
+    height: 100%;
+    background-color: #2E073F;
+    border-top-left-radius: 2.2rem;
+    border-bottom-left-radius: 2.2rem;
+    border: #ffffff solid 1rem;
+    position: relative;
+}
+.left-side-div .empty-div-two{
+    height: 120px;
+    width: 70px;
+    position: absolute;
+    border: #ffffff solid 10px;
+    bottom: 2rem;
+    border-top-right-radius: 100px;
+    border-bottom-right-radius: 100px;
+}
+.register-container .content-div{
+    width: 60%;
+    height: 100%;
+    /* border: #2E073F solid 2px; */
+    padding: 4rem 3rem 4rem 2rem;
+    text-align: center;
+}
+.content-div .input-field{
+    margin-top: 2rem;
+}
+.content-div .input-field select{
+    border: none;
+    border-bottom: #2E073F solid 1px;
+}
+.content-div .input-field button{
+    width: 100%;
+    height: 3rem;
+    transition: all 0.3s ease;
+    border: #7A1CAC solid 2px;
+}
+.content-div .input-field button:hover{
+    background-color: #ffffff;
+    border-radius: 1.5rem;
+    border: #7A1CAC solid 2px;
+    color: #7A1CAC;
+    font-weight: 600;
+}
+.text-div{
+    position: absolute;
+    right: 1.5rem;
+    top: 3rem;
+}
+.line-div-two{
+    position: absolute;
+    height: 3px;
+    width: 4rem;
+    background-color: #ffffff;
+    top: 9.5rem;
+    right: 1.6rem;
+}

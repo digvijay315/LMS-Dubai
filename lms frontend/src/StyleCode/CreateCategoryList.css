@@ -1,0 +1,124 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: "Montserrat", sans-serif;
+}
+
+.main-content-section{
+    width: 76.4;
+    /* border: #000 solid 2px; */
+}
+.add-new-Catgory{
+    display: flex;
+    justify-content: space-between;
+}
+.adding-course-div{
+    width: 60%;
+    /* height: 500px; */
+    border-radius: 10px;
+    background-color: #ffffff;
+    padding: 2rem;
+}
+.add-media-files{
+    width: 38%;
+    border-radius: 10px;
+    /* height: 500px; */
+    background-color: #ffffff;
+}
+.adding-course-div label{
+    display: block;
+    margin-bottom: 10px;
+    font-weight: 500;
+}
+.adding-course-div input, select{
+    width: 100%;
+    padding: 10px;
+    /* margin-bottom: 1rem; */
+}
+.inputs-div{
+    display: grid;
+    grid-template-columns: auto auto;
+    /* column-gap: 1rem; */
+}
+.add-media-files{
+    padding: 2rem;
+}
+.upload-div p{
+    height: 4rem;
+    width: 4rem;
+    background-color: rgba(46, 7, 63, 0.1);
+    font-size: 24px;
+    border-radius: 50%;
+    cursor: pointer;
+    color: #2E073F;
+    text-align: center;
+    margin: 2.5rem auto;
+    padding-top: 12px;
+}
+.upload-div i{
+    cursor: pointer;
+}
+.upload-div{
+    height: 10rem;
+    width: 100%;
+    border: #000 dashed 1px;
+}
+.content-div button{
+    height: 2.5rem;
+    width: 5rem;
+    margin-top: 1rem;
+    background-color: #7A1CAC;
+    color: #ffffff;
+    border: none;
+    font-weight: 500;
+    border-radius: 4px;
+    transition: all 0.2s ease;
+}
+.content-div button:hover{
+    background-color: #7a1caccd;
+}
+
+/* ======= Media button ======= */
+.content-div #previous-btn{
+    background-color: #ffffff;
+    color: #7A1CAC;
+    border: #7A1CAC solid 2px;
+    width: 7rem;
+    height: 3rem;
+    margin-right: 1rem;
+    transition: all 0.3s ease;
+    font-weight: 600;
+}
+.content-div #previous-btn:hover{
+    background-color: #7A1CAC;
+    color: #ffffff;
+}
+
+/* ====== Create New Courses CSS ====== */
+.create-options-course{
+    display: flex;
+}
+.create-options-course div{
+    height: 4.5rem;
+    width: 12rem;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(46, 7, 63, 0.1);
+}
+.create-options-course div:nth-child(2), 
+.create-options-course div:nth-child(3){
+    
+    border-right: #7A1CAC solid 2px;
+}
+/* .create-options-course div h6{
+    font-size: 14px;
+} */
+.info-div{
+    margin: 1rem !important;
+}
+.info-div label{
+    text-align: left;
+}
