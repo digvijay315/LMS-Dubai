@@ -9,6 +9,7 @@ import CreateNewSubject from './Components/CreateNewSubject.js';
 import LabelCourse from './Components/LabelCourse.js';
 import AllCourseList from './Components/AllCourseList.js';
 import CreateNewCourse from './Components/CreateNewCourse.js';
+// import AssignCourse from './Components/Courses/AssignCourse.js';
 import AllNotice from './Components/AllNotice.js';
 import AddNotice from './Components/AddNotice.js';
 import Register from './Components/Register.js';
@@ -147,6 +148,7 @@ import CertificateGenerator from './Components/Employee Dashboard/CertificateGen
 import EmployeeCertificates from './Components/Employee Dashboard/EmployeeCertificates.js';
 import CertificateViewer from './Components/Employee Dashboard/CertificateViewer.js';
 import CompanyRegister from './Components/HR Recruitment/CompanyRegister.js';
+import AssignCourse from './Components/Courses/AssignCourse.js';
 
 
 
@@ -171,6 +173,7 @@ function App() {
         <Route path='/labelCourse' element={<LabelCourse/>}></Route>
         <Route path='/AllCourseList' element={<AllCourseList/>}></Route> 
         <Route path='/CreateNewCourse' element={<CreateNewCourse/>}></Route>
+        <Route path='/AssignCourse' element={<AssignCourse/>}></Route>
         <Route path='/Allnotice' element={<AllNotice/>}></Route>
         <Route path='/addnotice' element={<AddNotice/>}></Route>
         <Route path='/AllEmployeList' element={<AllEmployeeList/>}></Route>

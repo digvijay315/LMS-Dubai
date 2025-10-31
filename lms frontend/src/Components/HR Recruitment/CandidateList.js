@@ -40,68 +40,70 @@ function CandidateList() {
 
 
     // Function to open CV in a new tab
-    const viewCV = (candidate) => {
-  if (!candidate.cv) {
-    toast.error('CV not available');
-    return;
-  }
+const viewCV = (candidate) => {
+  // if (!candidate.cvViewUrl) {
+  //   toast.error("CV not available");
+  //   return;
+  // }
 
-  // Always remove download forcing
-  const viewUrl = candidate.cv.includes('/upload/fl_attachment/')
-    ? candidate.cv.replace('/upload/fl_attachment/', '/upload/')
-    : candidate.cv;
+  // // Remove forced download flag if exists
+  // let viewUrl = candidate.cvViewUrl.replace("/upload/fl_attachment/", "/upload/");
 
-  window.open(viewUrl, '_blank', 'noopener,noreferrer');
+  // // Some Cloudinary setups serve PDFs as attachments unless explicitly embedded
+  // // So force inline display using a transformation
+  // if (viewUrl.includes("/upload/")) {
+  //   viewUrl = viewUrl.replace(
+  //     "/upload/",
+  //     "/upload/fl_attachment:false/"
+  //   );
+  // }
+
+  // const newTab = window.open(viewUrl, "_blank", "noopener,noreferrer");
+  // if (!newTab) toast.error("Popup blocked! Please allow popups for this site.");
 };
 
 
-        // Alternative method: Open CV in an embedded PDF viewer modal
-       const openPdfInModal = (cvUrl) => {
+
+
+
+const openPdfInModal = (cvUrl) => {
   if (!cvUrl) {
     toast.error('CV not available');
     return;
   }
 
-  // Force view URL — do NOT use fl_attachment
-  const previewUrl = cvUrl.includes('/upload/fl_attachment/')
-    ? cvUrl.replace('/upload/fl_attachment/', '/upload/')
-    : cvUrl;
-
-  // Embed in Google Docs Viewer for consistent preview across all devices
-  const embedUrl = `https://docs.google.com/viewer?url=${encodeURIComponent(previewUrl)}&embedded=true`;
-
-  setSelectedPdfUrl(embedUrl);
-  setShowPdfModal(true);
+  // Directly open the PDF in a new tab
+  window.open(cvUrl, '_blank', 'noopener,noreferrer');
 };
 
 
+
             // Function to handle direct download of CV
-    const downloadCV = (cvUrl) => {
-        if (!cvUrl) {
-            toast.error('CV not available');
-            return;
-        }
-        
-        // Create an invisible anchor element
-        const a = document.createElement('a');
-        a.style.display = 'none';
-        
-        // Add fl_attachment flag to force download if not already present
-        const downloadUrl = cvUrl.includes('/upload/') 
-            ? cvUrl.replace('/upload/', '/upload/fl_attachment/') 
-            : cvUrl;
-            
-        a.href = downloadUrl;
-        
-        // Extract filename from URL or use a default
-        const fileName = cvUrl.split('/').pop() || 'candidate-cv.pdf';
-        a.download = fileName;
-        
-        // Append to body, click, and remove
-        document.body.appendChild(a);
-        a.click();
-        document.body.removeChild(a);
-    };
+const downloadCV = (candidate) => {
+  if (!candidate.cvViewUrl) {
+    toast.error("CV not available");
+    return;
+  }
+
+  // Remove forced download flag if exists
+  let viewUrl = candidate.cvViewUrl.replace("/upload/fl_attachment/", "/upload/");
+
+  // Some Cloudinary setups serve PDFs as attachments unless explicitly embedded
+  // So force inline display using a transformation
+  if (viewUrl.includes("/upload/")) {
+    viewUrl = viewUrl.replace(
+      "/upload/",
+      "/upload/fl_attachment:cv/"
+    );
+  }
+
+  const newTab = window.open(viewUrl,  "noopener,noreferrer");
+  if (!newTab) toast.error("Popup blocked! Please allow popups for this site.");
+};
+
+
+
+
 
     // Function to show delete confirmation modal
     const confirmDelete = (candidate) => {
@@ -109,20 +111,7 @@ function CandidateList() {
         setShowDeleteModal(true);
     };
 
-    // Function to handle actual deletion
-    // const handleDelete = async () => {
-    //     try {
-    //         await axios.delete(`${base_url}/delete_candidate/${candidateToDelete._id}`);
-    //         toast.success('Candidate deleted successfully');
-    //         setShowDeleteModal(false);
-    //         setCandidateToDelete(null);
-    //         // Refresh the list
-    //         getCandidates();
-    //     } catch (error) {
-    //         console.error('Error deleting candidate:', error);
-    //         toast.error('Failed to delete candidate');
-    //     }
-    // };
+
 
     // Function to handle actual deletion
     const handleDelete = async () => {
@@ -434,6 +423,11 @@ function CandidateList() {
       .dt-search #dt-search-0:focus{
       outline: none;
       }
+.table-scroll {
+  overflow-x: auto;
+  width: 100%;
+  white-space: nowrap;
+}
 
       th, td {
       font-size: 12px;}
@@ -452,7 +446,7 @@ function CandidateList() {
                             <h5>All Candidate List</h5>
                         </div>
 
-                        <div className='candidate-list-items'>
+                        <div className='table-scroll'>
                             {loading ? (
                                 <div className="loading-spinner">Loading...</div>
                             ) : (
@@ -498,7 +492,7 @@ function CandidateList() {
                                                                 disabled={!data.cv}
                                                                 title="Open CV in new tab"
                                                             >
-                                                                View
+                                                                Profile View
                                                             </button>
                                                             <button 
                                                                 className="btn btn-info"
@@ -506,15 +500,15 @@ function CandidateList() {
                                                                 disabled={!data.cv}
                                                                 title="View in Google PDF Viewer"
                                                             >
-                                                                Preview
+                                                                CV View
                                                             </button>
                                                             <button 
                                                                 className="btn btn-secondary"
-                                                                onClick={() => downloadCV(data.cv)}
+                                                                onClick={() => downloadCV(data)}
                                                                 disabled={!data.cv}
                                                                 title="Download CV"
                                                             >
-                                                                Download
+                                                               CV Download
                                                             </button>
                                                         </div>
                                                     </td>
@@ -564,7 +558,7 @@ function CandidateList() {
                         <Modal.Header closeButton>
                             <Modal.Title>CV Preview</Modal.Title>
                         </Modal.Header>
-                        <Modal.Body className="p-0">
+                        <Modal.Body className="p-0">https://meet.google.com/fqq-pqjt-mgu
                             <div style={{ height: '80vh', width: '100%' }}>
                                 <iframe 
                                     src={selectedPdfUrl}

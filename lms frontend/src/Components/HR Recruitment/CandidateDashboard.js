@@ -437,12 +437,14 @@ const CandidateDashboard = () => {
         const candidateResponse = await axios.get(`${base_url}/get_candidate/${candidateId}`, {
           headers: { Authorization: `Bearer ${token}` }
         });
+     
         
         // Get document requirements for the candidate
         const documentsResponse = await axios.get(`${base_url}/candidate_documents/${candidateId}`, {
           headers: { Authorization: `Bearer ${token}` }
         });
 
+     
         setCandidateData(candidateResponse.data.data);
         
         // Format the document statuses
@@ -628,6 +630,9 @@ const CandidateDashboard = () => {
       </div>
     );
   }
+
+  console.log(candidateData);
+  
   
   // Check if there are any rejected documents
   const hasRejectedDocs = documents.some(doc => doc.status === 'rejected');
@@ -671,9 +676,7 @@ const CandidateDashboard = () => {
 
     /* Header / Navigation */
     .app-header {
-    background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
     padding: 1.25rem 0;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
     position: sticky;
     top: 0;
     z-index: 100;
@@ -719,6 +722,7 @@ const CandidateDashboard = () => {
     /* Dashboard Layout */
     .dashboard-container {
     padding: 2rem 0;
+    z-index:9999
     }
 
     /* Cards */
@@ -1071,32 +1075,81 @@ const CandidateDashboard = () => {
     </style>
 
       <div className="dashboard-layout">
-        <header className="app-header">
-          <div className="container header-content">
-            <h1 className="app-title">Candidate Portal</h1>
-            { <button onClick={handleLogout} className="logout-btn">
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
-                <polyline points="16 17 21 12 16 7"></polyline>
-                <line x1="21" y1="12" x2="9" y2="12"></line>
-              </svg>
-              Logout
-            </button> }
-          </div>
-        </header>
+
+
         
         <div className="container dashboard-container">
+
+          <header
+  className="app-header"
+  style={{
+    backgroundColor: "#f8f9fa",
+    padding: "1rem 2rem",
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "space-between",
+    borderBottom: "1px solid #ddd",
+  }}
+>
+  <h1
+    className="app-title"
+    style={{
+      fontSize: "1.5rem",
+      fontWeight: "600",
+      margin: 0,
+      color: "#333",
+    }}
+  >
+    Candidate Portal
+  </h1>
+
+  <button
+    onClick={handleLogout}
+    className="logout-btn"
+    style={{
+      display: "flex",
+      alignItems: "center",
+      gap: "8px",
+      backgroundColor: "#e63946",
+      color: "white",
+      border: "none",
+      borderRadius: "6px",
+      padding: "8px 14px",
+      cursor: "pointer",
+      fontWeight: "500",
+    }}
+  >
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="16"
+      height="16"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
+      <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
+      <polyline points="16 17 21 12 16 7"></polyline>
+      <line x1="21" y1="12" x2="9" y2="12"></line>
+    </svg>
+    Logout
+  </button>
+</header>
+
+
           {candidateData && (
-            <div className="card">
+            <div className="card" style={{marginTop:"20px"}}>
               <div className="card-header">
                 <h2 className="card-title">Welcome, <span className="welcome-name">{candidateData.candidateName}</span></h2>
               </div>
               <div className="card-body">
                 <div className="profile-grid">
                   <div>
-                    <p className="profile-field">Email: <span>{candidateData.email}</span></p>
-                    <p className="profile-field">Job Title: <span>{candidateData.jobTitle}</span></p>
-                    <p className="profile-field">Function: <span>{candidateData.jobFunction}</span></p>
+                    <p className="profile-field">Email: <span>{candidateData?.email}</span></p>
+                    <p className="profile-field">Job Title: <span>{candidateData?.jobTitle}</span></p>
+                    <p className="profile-field">Function: <span>{candidateData?.jobFunction}</span></p>
                   </div>
                   <div>
                     <p className="profile-field">Nationality: <span>{candidateData.nationality}</span></p>

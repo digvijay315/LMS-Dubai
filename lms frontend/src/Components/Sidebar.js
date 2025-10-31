@@ -24,14 +24,14 @@ function Sidebar() {
 
   const courseManageMenu = [
     {
-      label: 'Subject',
-      subMenu: [
-        { label: 'All Subject List', link: '/AllSubject' },
-        { label: 'Create New Subject', link: '/createSubject' },
-      ],
+     // label: 'Subject',
+      //subMenu: [
+       // { label: 'All Subject List', link: '/AllSubject' },
+       // { label: 'Create New Subject', link: '/createSubject' },
+    //  ],
     },
-    { label: 'Tag', link: '/tagCourse' },
-    { label: 'Label', link: '/labelCourse' },
+   // { label: 'Tag', link: '/tagCourse' },
+    //{ label: 'Label', link: '/labelCourse' },
     {
       label: 'Course',
       subMenu: [
@@ -39,6 +39,7 @@ function Sidebar() {
         { label: 'Create New Course', link: '/CreateNewCourse' },
         { label: 'Edit Course', link: '#' },
         { label: 'Course View', link: '/maincourse' },
+         { label: 'Assign Course', link: '/AssignCourse' },
       ],
     },
   ];
@@ -62,6 +63,13 @@ function Sidebar() {
   const evaluation = [
     { label: 'OJT, OJA, INA', link: '/jobtraining'},
     { label: 'View OJT, OJA and INA', link: '/viewOjtOjaIna'},
+    { label: 'Conduct Mentorship', 
+      subMenu: [
+        { label: 'OJT', link: '/conductOJT' },
+        { label: 'OJA', link: '/conductOJA' },
+        { label: 'INA', link: '/conductINA' },
+      ]
+     }, 
   ];
 
   const compatencyManagement = [
