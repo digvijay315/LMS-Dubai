@@ -7,8 +7,11 @@ import axios from 'axios'
 import { base_url } from '../Utils/base_url'
 import { Modal, Button } from 'react-bootstrap'; // Assuming you're using Bootstrap
 import { toast } from 'react-toastify';
+import { useNavigate } from 'react-router-dom'
 
 function CandidateList() {
+
+    const navigate=useNavigate()
 
     const [candidates, setCandidates] = useState([]);
     const [loading, setLoading] = useState(true);
@@ -488,7 +491,7 @@ const downloadCV = (candidate) => {
                                                         <div className="btn-group btn-group-sm">
                                                             <button 
                                                                 className="btn btn-primary"
-                                                                onClick={() => viewCV(data)}
+                                                                onClick={() => navigate('/candidate-profile-view', { state: { id: data._id } })}
                                                                 disabled={!data.cv}
                                                                 title="Open CV in new tab"
                                                             >

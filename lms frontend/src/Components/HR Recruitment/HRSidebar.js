@@ -137,7 +137,7 @@ function HRSidebar() {
                       className="accordion-button collapsed"
                       type="button"
                     >
-                      Interviewer Login
+                      Technichal Interview
                     </button>
                     </NavLink>
                   </h2>

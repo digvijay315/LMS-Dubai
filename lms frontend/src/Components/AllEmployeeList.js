@@ -9,6 +9,8 @@ import { useNavigate } from 'react-router-dom';
 import $ from 'jquery'; // Import jQuery
 import 'datatables.net'; // Import DataTables
 import { base_url } from "./Utils/base_url";
+import { Modal, Button, Table } from "react-bootstrap";
+import './Css/employee_profile_view.css'
 
 function AllEmployeeList() {
     useEffect( () => { 
@@ -28,6 +30,9 @@ function AllEmployeeList() {
             console.log(error)
         }
     }
+
+
+    
 
     const delete_Data = async (_id) => {
         try {
@@ -76,6 +81,22 @@ function AllEmployeeList() {
           };
         }
       }, [data]);
+
+
+  const [show, setShow] = useState(false);
+
+  const[employee,setemployee]=useState()
+
+
+  const showEmployeeDetails = (data) => 
+    {
+          console.log(data);
+      setShow(true);
+      setemployee(data)
+    }
+  const handleClose = () => setShow(false);
+
+
     
   return (
     <div style={{backgroundColor: "rgba(46, 7, 63, 0.1)", padding: "20px", height: "100vh"}}>
@@ -155,7 +176,7 @@ function AllEmployeeList() {
                             <th style={{paddingRight: "10rem"}}>Name</th>
                             <th style={{paddingRight: "5rem"}}>Job title</th>
                             <th style={{paddingRight: "5rem"}}>Date of join</th>
-                            <th>Delete Employee</th>
+                            <th>Action</th>
                         </tr>
                     </thead>
 
@@ -168,7 +189,12 @@ function AllEmployeeList() {
                                     <td>{item.employee_name}</td>
                                     <td>{item.job_title}</td>
                                     <td>{item.date_of_join}</td>
-                                    <td><button onClick={ () => delete_Data(item._id)}>Delete</button></td>
+                                    <td>
+                                      <div style={{display:"flex",gap:"10px"}}>
+                                      <button onClick={ () => delete_Data(item._id)}>Delete</button>
+                                      <button onClick={ () => showEmployeeDetails(item)}>View</button>
+                                      </div>
+                                      </td>
                                 </tr>
                             )
                         }
@@ -177,6 +203,107 @@ function AllEmployeeList() {
                 </table>
             </div>
       </section>
+
+
+   <Modal show={show} onHide={handleClose} size="xl" centered>
+      <Modal.Header closeButton className="bg-primary text-white">
+        <Modal.Title>
+          Employee Profile - {employee?.employee_name || "N/A"}
+        </Modal.Title>
+      </Modal.Header>
+
+      <Modal.Body className="employee-modal-body">
+        <div className="employee-section">
+          <h5 className="section-title">Basic Information</h5>
+          <div className="info-grid">
+            <div><strong>Employee ID:</strong> {employee?.employee_id || "N/A"}</div>
+            <div><strong>Email:</strong> {employee?.employee_email || "N/A"}</div>
+            <div><strong>Function Title:</strong> {employee?.function_title || "N/A"}</div>
+            <div><strong>Job Title:</strong> {employee?.job_title || "N/A"}</div>
+            <div><strong>Date of Join:</strong> {employee?.date_of_join || "N/A"}</div>
+            <div><strong>Department:</strong> {employee?.department || "N/A"}</div>
+            <div><strong>Region:</strong> {employee?.region || "N/A"}</div>
+            <div>
+              <strong>Status:</strong>{" "}
+              <span className={`status-badge ${employee?.status}`}>
+                {employee?.status || "N/A"}
+              </span>
+            </div>
+          </div>
+        </div>
+
+        <div className="employee-section">
+          <h5 className="section-title">Project Details</h5>
+          <div className="info-grid">
+            <div><strong>Project Code:</strong> {employee?.project_code || "N/A"}</div>
+            <div><strong>Project Name:</strong> {employee?.project_name || "N/A"}</div>
+            <div><strong>Project Manager:</strong> {employee?.project_manger || "N/A"}</div>
+            <div>
+              <strong>Date of Assign:</strong>{" "}
+              {employee?.date_of_assign
+                ? new Date(employee.date_of_assign).toLocaleDateString()
+                : "N/A"}
+            </div>
+          </div>
+        </div>
+
+        <div className="employee-section">
+          <h5 className="section-title">Role & Designation</h5>
+          <div className="info-grid">
+            <div><strong>Employee ID (Secondary):</strong> {employee?.employee_id_two || "N/A"}</div>
+            <div><strong>Name:</strong> {employee?.name || "N/A"}</div>
+            <div><strong>Designation:</strong> {employee?.designation || "N/A"}</div>
+            <div><strong>Role:</strong> {employee?.role || "N/A"}</div>
+          </div>
+        </div>
+
+        <div className="employee-section">
+          <h5 className="section-title">Experience</h5>
+          <div className="card-container">
+            {employee?.experiences?.length > 0 ? (
+              employee.experiences.map((exp, idx) => (
+                <div key={idx} className="employee-card">
+                  <h6>{exp?.job_experience_title || "N/A"}</h6>
+                  <p><strong>Company:</strong> {exp?.company_name || "N/A"}</p>
+                  <p><strong>Type:</strong> {exp?.employment_type || "N/A"}</p>
+                  <p><strong>From:</strong> {exp?.start_date || "N/A"} → {exp?.end_date || "N/A"}</p>
+                  <p><strong>Total Experience:</strong> {exp?.total_experience || 0} years</p>
+                </div>
+              ))
+            ) : (
+              <p className="text-muted">No experience added.</p>
+            )}
+          </div>
+        </div>
+
+        <div className="employee-section">
+          <h5 className="section-title">Certificates</h5>
+          <div className="card-container">
+            {employee?.certificates?.length > 0 ? (
+              employee.certificates.map((cert, idx) => (
+                <div key={idx} className="employee-card">
+                  <h6>{cert?.certificate_title || "N/A"}</h6>
+                  <p><strong>Date of Certification:</strong> {cert?.date_of_certification || "N/A"}</p>
+                  <p><strong>Valid Till:</strong> {cert?.validate_till || "N/A"}</p>
+                </div>
+              ))
+            ) : (
+              <p className="text-muted">No certificates available.</p>
+            )}
+          </div>
+        </div>
+      </Modal.Body>
+
+      <Modal.Footer>
+        <Button variant="secondary" onClick={handleClose}>
+          Close
+        </Button>
+      </Modal.Footer>
+    </Modal>
+
+
+
+
     </div>
   )
 }

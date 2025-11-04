@@ -604,6 +604,9 @@ import { useNavigate } from 'react-router-dom';
         setLoading(false);
       }
     };
+
+    console.log(candidates);
+    
   
     // Determine the appropriate notification type based on candidate status
     const determineNotificationType = (candidate) => {

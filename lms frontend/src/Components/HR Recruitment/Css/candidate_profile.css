@@ -1,0 +1,109 @@
+/* Container */
+.candidate-profile-wrapper {
+  max-width: 1100px;
+  margin: 2rem auto;
+  padding: 1rem;
+  background: #f3f4f6;
+  border-radius: 12px;
+  font-family: "Poppins", sans-serif;
+}
+
+/* Header */
+.header-card {
+  text-align: center;
+  background: white;
+  border-radius: 12px;
+  padding: 1.5rem;
+  box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+  margin-bottom: 1rem;
+}
+
+.header-card h1 {
+  font-size: 1.8rem;
+  color: #1e3a8a;
+}
+
+.header-card .job {
+  color: #4b5563;
+  margin: 0.3rem 0;
+}
+
+.header-card .email {
+  color: #2563eb;
+  font-weight: 500;
+}
+
+/* Grid Layout for Cards */
+.profile-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+  gap: 1rem;
+}
+
+/* Individual Section Cards */
+.profile-card {
+  background: white;
+  padding: 1rem 1.2rem;
+  border-radius: 12px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+  transition: all 0.2s ease-in-out;
+}
+
+.profile-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.profile-card h2 {
+  font-size: 1.1rem;
+  color: #111827;
+  border-bottom: 2px solid #2563eb;
+  padding-bottom: 4px;
+  margin-bottom: 0.8rem;
+}
+
+/* Info Grid inside Cards */
+.info-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.6rem;
+}
+
+.info-grid p {
+  margin: 0;
+  font-size: 0.9rem;
+}
+
+.info-grid strong {
+  color: #374151;
+}
+
+/* Sub Cards for Experience/Certificates */
+.sub-card {
+  background: #f9fafb;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  padding: 0.8rem;
+  margin-bottom: 0.8rem;
+}
+
+.sub-card h3 {
+  color: #1e40af;
+  margin-bottom: 0.4rem;
+  font-size: 1rem;
+}
+
+/* Loading */
+.loading {
+  text-align: center;
+  font-size: 1.1rem;
+  color: #4b5563;
+  margin-top: 2rem;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .info-grid {
+    grid-template-columns: 1fr;
+  }
+}

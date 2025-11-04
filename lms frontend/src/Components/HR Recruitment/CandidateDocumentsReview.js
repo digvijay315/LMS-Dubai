@@ -1,9 +1,9 @@
-import React, { useState, useEffect } from 'react';
-import axios from 'axios';
-import { base_url } from '../Utils/base_url';
-import HRSidebar from './HRSidebar';
-import HRHeader from './HRHeader';
-import { toast, ToastContainer } from 'react-toastify';
+import React, { useState, useEffect } from "react";
+import axios from "axios";
+import { base_url } from "../Utils/base_url";
+import HRSidebar from "./HRSidebar";
+import HRHeader from "./HRHeader";
+import { toast, ToastContainer } from "react-toastify";
 
 const CandidateDocumentsReview = () => {
   const [visaDocuments, setVisaDocuments] = useState([]);
@@ -12,25 +12,23 @@ const CandidateDocumentsReview = () => {
   const [documentDetails, setDocumentDetails] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  const [filter, setFilter] = useState('all'); // all, pending, submitted, approved, rejected
+  const [filter, setFilter] = useState("all"); // all, pending, submitted, approved, rejected
   const [comments, setComments] = useState({}); // Store comments as an object with keys like "statusId-documentName"
-const [projectFilter, setProjectFilter] = useState(''); // Holds selected project filter (project name)
-const [projects, setProjects] = useState([]);
+  const [projectFilter, setProjectFilter] = useState(""); // Holds selected project filter (project name)
+  const [projects, setProjects] = useState([]);
 
-
-
-useEffect(() => {
-  const fetchProjects = async () => {
-    try {
-      const response = await axios.get(`${base_url}/get_projects`);
-      setProjects(response.data); // Adjust if your API returns data under .data
-    } catch (err) {
-      // Optionally handle error
-    }
-  };
-  fetchProjects();
-}, []);
-console.log(projects)
+  useEffect(() => {
+    const fetchProjects = async () => {
+      try {
+        const response = await axios.get(`${base_url}/get_projects`);
+        setProjects(response.data); // Adjust if your API returns data under .data
+      } catch (err) {
+        // Optionally handle error
+      }
+    };
+    fetchProjects();
+  }, []);
+  console.log(projects);
 
   useEffect(() => {
     // Fetch all visa documents
@@ -38,18 +36,19 @@ console.log(projects)
       try {
         setLoading(true);
         const response = await axios.get(`${base_url}/visa_documents`);
-        
+
         // Axios already returns the parsed JSON, no need to call response.json()
         setVisaDocuments(response.data.data);
-        
-        
+
         // Extract unique candidates from all visa documents
         const allCandidates = [];
         if (response.data.data && Array.isArray(response.data.data)) {
-          response.data.data.forEach(doc => {
+          response.data.data.forEach((doc) => {
             if (doc.candidates && Array.isArray(doc.candidates)) {
-              doc.candidates.forEach(candidate => {
-                const existingCandidate = allCandidates.find(c => c._id === candidate._id);
+              doc.candidates.forEach((candidate) => {
+                const existingCandidate = allCandidates.find(
+                  (c) => c._id === candidate._id
+                );
                 if (!existingCandidate) {
                   allCandidates.push(candidate);
                 }
@@ -58,10 +57,10 @@ console.log(projects)
           });
         }
         setCandidates(allCandidates);
-        
+
         setLoading(false);
       } catch (err) {
-        setError(err.message || 'Failed to fetch visa documents');
+        setError(err.message || "Failed to fetch visa documents");
         setLoading(false);
       }
     };
@@ -69,32 +68,35 @@ console.log(projects)
     fetchVisaDocuments();
   }, []);
 
-console.log(visaDocuments)
+  console.log(visaDocuments);
   const uniqueProjects = Array.from(
-  new Set(
-    visaDocuments
-      .map(doc => doc.visaDocument?.project?.name)
-      .filter(name => !!name)
-  )
-);
-
-
+    new Set(
+      visaDocuments
+        .map((doc) => doc.visaDocument?.project?.name)
+        .filter((name) => !!name)
+    )
+  );
 
   const fetchCandidateDocuments = async (candidateId) => {
     try {
       setLoading(true);
-      const response = await axios.get(`${base_url}/visa_documents_candidate/${candidateId}`);
-      console.log(response); 
-      
+      const response = await axios.get(
+        `${base_url}/visa_documents_candidate/${candidateId}`
+      );
+      console.log(response);
+
       // Axios already returns the parsed JSON, no need to call response.json()
       setDocumentDetails(response.data.data);
-      
+
       // Initialize comments with existing values
       const newComments = {};
       if (response.data.data && Array.isArray(response.data.data)) {
-        response.data.data.forEach(statusRecord => {
-          if (statusRecord.documentStatuses && Array.isArray(statusRecord.documentStatuses)) {
-            statusRecord.documentStatuses.forEach(docStatus => {
+        response.data.data.forEach((statusRecord) => {
+          if (
+            statusRecord.documentStatuses &&
+            Array.isArray(statusRecord.documentStatuses)
+          ) {
+            statusRecord.documentStatuses.forEach((docStatus) => {
               const commentKey = `${statusRecord._id}-${docStatus.document}`;
               newComments[commentKey] = docStatus.comments || "";
             });
@@ -102,10 +104,10 @@ console.log(visaDocuments)
         });
       }
       setComments(newComments);
-      
+
       setLoading(false);
     } catch (err) {
-      setError(err.message || 'Failed to fetch candidate documents');
+      setError(err.message || "Failed to fetch candidate documents");
       setLoading(false);
     }
   };
@@ -115,41 +117,53 @@ console.log(visaDocuments)
     fetchCandidateDocuments(candidate._id);
   };
 
-  const handleUpdateStatus = async (statusId, documentName, status, commentKey) => {
+  const handleUpdateStatus = async (
+    statusId,
+    documentName,
+    status,
+    commentKey
+  ) => {
     try {
       setLoading(true);
-      
+
       // Prepare the request body
       const requestBody = {
         statusId: statusId,
         documentName: documentName,
         status: status,
-        comments: comments[commentKey] || ''
+        comments: comments[commentKey] || "",
       };
-      
+
       // Make the API call
-      const response = await axios.put(`${base_url}/visa_documents_status_update`, requestBody);
-      
+      const response = await axios.put(
+        `${base_url}/visa_documents_status_update`,
+        requestBody
+      );
+
       if (response.data.success) {
         // Update the UI with the new data
-        const updatedDocumentDetails = documentDetails.map(record => {
+        const updatedDocumentDetails = documentDetails.map((record) => {
           if (record._id === statusId) {
             return response.data.data;
           }
           return record;
         });
-        
+
         setDocumentDetails(updatedDocumentDetails);
-        setComments({ ...comments, [commentKey]: '' }); // Clear the comment
-        
+        setComments({ ...comments, [commentKey]: "" }); // Clear the comment
+
         // Show success message
         toast.success(`Document status updated to ${status} successfully`);
       } else {
         setError(response.data.message);
       }
     } catch (error) {
-      console.error('Error updating document status:', error);
-      setError(error.response?.data?.message || error.message || 'Failed to update document status');
+      console.error("Error updating document status:", error);
+      setError(
+        error.response?.data?.message ||
+          error.message ||
+          "Failed to update document status"
+      );
     } finally {
       setLoading(false);
     }
@@ -159,7 +173,7 @@ console.log(visaDocuments)
   const handleCommentChange = (key, value) => {
     setComments({
       ...comments,
-      [key]: value
+      [key]: value,
     });
   };
 
@@ -167,42 +181,73 @@ console.log(visaDocuments)
     setFilter(e.target.value);
   };
 
-const getFilteredCandidates = () => {
-  console.log("--- getFilteredCandidates ---");
-  console.log("Current filter:", filter);
-  console.log("Current projectFilter:", projectFilter);
-  console.log("Visa documents sample projects:", visaDocuments.slice(0,3).map(doc => doc.visaDocument?.project?._id?.toString()));
+  const getFilteredCandidates = () => {
+    console.log("--- getFilteredCandidates ---");
+    console.log("Current filter:", filter);
+    console.log("Current projectFilter:", projectFilter);
+    console.log(
+      "Visa documents sample projects:",
+      visaDocuments
+        .slice(0, 3)
+        .map((doc) => doc.visaDocument?.project?._id?.toString())
+    );
 
-  let filtered = candidates;
+    let filtered = candidates;
 
-  if (filter !== 'all') {
-    filtered = filtered.filter(candidate => candidate.status === filter);
+    if (filter !== "all") {
+      filtered = filtered.filter((candidate) => candidate.status === filter);
+    }
+
+    if (projectFilter) {
+      filtered = filtered.filter((candidate) =>
+        visaDocuments.some(
+          (doc) =>
+            doc.project &&
+            doc.project._id.toString() === projectFilter.toString() &&
+            doc.candidates.some(
+              (c) => c._id.toString() === candidate._id.toString()
+            )
+        )
+      );
+    }
+
+    console.log(
+      "Filtered candidates:",
+      filtered.map((c) => c.candidateName)
+    );
+    return filtered;
+  };
+
+  // download document
+
+const handleDownloadDocument = (fileUrl) => {
+  if (!fileUrl) {
+    toast.error("Document not available");
+    return;
   }
 
-if (projectFilter) {
-  filtered = filtered.filter(candidate =>
-    visaDocuments.some(doc =>
-      doc.project &&
-      doc.project._id.toString() === projectFilter.toString() &&
-      doc.candidates.some(c => c._id.toString() === candidate._id.toString())
-    )
-  );
-}
+  // Remove forced download flag if exists
+  let viewUrl = fileUrl.replace("/upload/fl_attachment/", "/upload/");
 
+  // Some Cloudinary setups serve PDFs as attachments unless explicitly embedded
+  // So force inline display using a transformation
+  if (viewUrl.includes("/upload/")) {
+    viewUrl = viewUrl.replace(
+      "/upload/",
+      "/upload/fl_attachment:cv/"
+    );
+  }
 
-  console.log("Filtered candidates:", filtered.map(c => c.candidateName));
-  return filtered;
+  const newTab = window.open(viewUrl,  "noopener,noreferrer");
+  if (!newTab) toast.error("Popup blocked! Please allow popups for this site.");
 };
-
-
 
 
 
   return (
     <div>
-
-<style>
-{`
+      <style>
+        {`
 /* Base styles */
 body {
 background-color: #f0f4f8;
@@ -506,10 +551,45 @@ font-size: 0.95rem;
 color: #4a5568;
 }
 
-.document-actions {
-display: flex;
-gap: 12px;
+.document-buttons {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start; /* Align buttons to left */
+  gap: 10px; /* Space between buttons */
 }
+
+.view-document-btn,
+.download-document-btn {
+  display: inline-block;
+  padding: 8px 14px;
+  border-radius: 6px;
+  font-size: 14px;
+  cursor: pointer;
+  text-decoration: none;
+  transition: all 0.2s ease-in-out;
+}
+
+/* View button style */
+.view-document-btn {
+  background-color: #007bff;
+  color: white;
+}
+
+/* Download button style */
+.download-document-btn {
+  background-color: #28a745;
+  color: white;
+  border: none;
+}
+
+.view-document-btn:hover {
+  background-color: #0056b3;
+}
+
+.download-document-btn:hover {
+  background-color: #1e7e34;
+}
+
 
 .view-document-btn {
 padding: 10px 16px;
@@ -643,225 +723,257 @@ border-radius: 10px;
 background: #a0aec0;
 }
 `}
-</style>
+      </style>
 
+      <div>
+        <HRSidebar />
+        <div class="main-content-section">
+          <HRHeader />
 
-        <div>
-            <HRSidebar/>
-            <div class="main-content-section">
-                <HRHeader/>
+          <div class="dashboard-container">
+            <h4 class="dashboard-title">Visa Department Admin Dashboard</h4>
 
-                <div class="dashboard-container">
-                    <h4 class="dashboard-title">
-                        Visa Department Admin Dashboard
-                    </h4>
-                    
-                    {error && (
-                        <div class="error-message">
-                            Error: {error}
-                        </div>
-                    )}
-                    
-                    <div class="dashboard-layout">
-                        <div>
-<h5 class="candidates-title">Project Name</h5>
-                        <select
-  value={projectFilter}
-  onChange={e => {
-    console.log("Selected projectFilter:", e.target.value);
-    setProjectFilter(e.target.value);
-  }}
-  className="status-filter"
-  style={{ marginBottom: '10px' }}
->
-  <option value="">All Projects</option>
-  {projects.map(project => (
-    <option key={project._id} value={project._id}>
-      {project.code ? `${project.code} - ${project.name}` : project.name}
-    </option>
-  ))}
-</select>
+            {error && <div class="error-message">Error: {error}</div>}
 
+            <div class="dashboard-layout">
+              <div>
+                <h5 class="candidates-title">Project Name</h5>
+                <select
+                  value={projectFilter}
+                  onChange={(e) => {
+                    console.log("Selected projectFilter:", e.target.value);
+                    setProjectFilter(e.target.value);
+                  }}
+                  className="status-filter"
+                  style={{ marginBottom: "10px" }}
+                >
+                  <option value="">All Projects</option>
+                  {projects.map((project) => (
+                    <option key={project._id} value={project._id}>
+                      {project.code
+                        ? `${project.code} - ${project.name}`
+                        : project.name}
+                    </option>
+                  ))}
+                </select>
 
-
-
-
-                            <div class="candidates-header">
-                                <h5 class="candidates-title">Candidates</h5>
-                                <select 
-                                    value={filter} 
-                                    onChange={handleFilterChange}
-                                    class="status-filter"
-                                >
-                                    <option value="all">All Status</option>
-                                    <option value="pending">Pending</option>
-                                    <option value="submitted">Submitted</option>
-                                    <option value="approved">Approved</option>
-                                    <option value="rejected">Rejected</option>
-                                </select>
-                            </div>
-                            
-                            {loading && !selectedCandidate ? <p class="loading-text">Loading candidates...</p> : (
-                                <div class="candidates-list">
-                                    {getFilteredCandidates().length > 0 ? (
-                                        getFilteredCandidates().map(candidate => (
-                                            <div 
-                                                key={candidate._id} 
-                                                class={`candidate-item ${selectedCandidate && selectedCandidate._id === candidate._id ? 'selected' : ''}`}
-                                                onClick={() => handleViewDocuments(candidate)}
-                                            >
-                                                <div class="candidate-details">
-                                                    <div class="candidate-info">
-                                                        <h6>{candidate.candidateName}</h6>
-                                                        <p>{candidate.email}</p>
-                                                    </div>
-                                                    <button 
-                                                        onClick={(e) => {
-                                                            e.stopPropagation();
-                                                            handleViewDocuments(candidate);
-                                                        }}
-                                                        class="view-docs-btn"
-                                                    >
-                                                        View Documents
-                                                    </button>
-                                                </div>
-                                            </div>
-                                        ))
-                                    ) : (
-                                        <p class="empty-candidates">
-                                            No candidates found with the selected filter.
-                                        </p>
-                                    )}
-                                </div>
-                            )}
-                        </div>
-                        
-                        <div class="documents-section">
-                            {selectedCandidate ? (
-                                <>
-                                    <h5>Documents of {selectedCandidate.candidateName}</h5>
-                                    
-                                    {loading ? <p class="loading-text">Loading documents...</p> : (
-                                        documentDetails && documentDetails.length > 0 ? (
-                                            documentDetails.map(statusRecord => (
-                                                <div 
-                                                    key={statusRecord._id}
-                                                    class="document-record"
-                                                >
-                                                    <div class="document-header">
-                                                        <div class="document-project">
-                                                            <h5>
-                                                                Project: {statusRecord.visaDocument?.project?.name || 'Unknown Project'}
-                                                            </h5>
-                                                        </div>
-                                                        <p class="overall-status">
-                                                            Overall Status: 
-                                                            <span class={`status-badge status-${statusRecord.overallStatus.toLowerCase()}`}>
-                                                                {statusRecord.overallStatus.toUpperCase()}
-                                                            </span>
-                                                        </p>
-                                                    </div>
-                                                    
-                                                    <div class="document-content">
-                                                        <h5>Required Document</h5>
-                                                        <div class="documents-list">
-                                                            {statusRecord.documentStatuses.map((docStatus, index) => {
-                                                                const commentKey = `${statusRecord._id}-${docStatus.document}`;
-                                                                
-                                                                return (
-                                                                    <div key={index} class="document-item">
-                                                                        <div class="document-item-header">
-                                                                            <div class="document-details">
-                                                                                <h4>{docStatus.document}</h4>
-                                                                                <div class="document-status">
-                                                                                    <span>Status: </span>
-                                                                                    <span class={`status-badge status-${docStatus.status.toLowerCase()}`}>
-                                                                                        {docStatus.status.toUpperCase()}
-                                                                                    </span>
-                                                                                </div>
-                                                                                
-                                                                                {docStatus.submittedAt && (
-                                                                                    <p class="document-date">
-                                                                                        Submitted: {new Date(docStatus.submittedAt).toLocaleString()}
-                                                                                    </p>
-                                                                                )}
-                                                                                
-                                                                                {docStatus.comments && (
-                                                                                    <div class="document-comments">
-                                                                                        <p>Comments:</p>
-                                                                                        <p class="comment-text">
-                                                                                            {docStatus.comments}
-                                                                                        </p>
-                                                                                    </div>
-                                                                                )}
-                                                                            </div>
-                                                                            
-                                                                            <div class="document-actions">
-                                                                                {docStatus.submittedFile && (
-                                                                                    <a 
-                                                                                        href={docStatus.submittedFile} 
-                                                                                        target="_blank" 
-                                                                                        rel="noopener noreferrer"
-                                                                                        class="view-document-btn"
-                                                                                    >
-                                                                                        View Document
-                                                                                    </a>
-                                                                                )}
-                                                                            </div>
-                                                                        </div>
-                                                                        
-                                                                        {docStatus.status === 'submitted' && (
-                                                                            <div class="status-action-section">
-                                                                                <button 
-                                                                                    onClick={() => handleUpdateStatus(statusRecord._id, docStatus.document, 'approved', commentKey)}
-                                                                                    class="approve-btn"
-                                                                                >
-                                                                                    Approve
-                                                                                </button>
-                                                                                <button 
-                                                                                    onClick={() => handleUpdateStatus(statusRecord._id, docStatus.document, 'rejected', commentKey)}
-                                                                                    class="reject-btn"
-                                                                                >
-                                                                                    Reject
-                                                                                </button>
-                                                                                <textarea 
-                                                                                    value={comments[commentKey] || ''}
-                                                                                    onChange={(e) => handleCommentChange(commentKey, e.target.value)}
-                                                                                    placeholder="Add comment (optional)"
-                                                                                    class="comment-textarea"
-                                                                                />
-                                                                            </div>
-                                                                        )}
-                                                                    </div>
-                                                                );
-                                                            })}
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            ))
-                                        ) : (
-                                            <p>No document records found for this candidate.</p>
-                                        )
-                                    )}
-                                </>
-                            ) : (
-                                <div class="empty-documents">
-                                    <p>Select a candidate to view their documents</p>
-                                </div>
-                            )}
-                        </div>
-                    </div>
+                <div class="candidates-header">
+                  <h5 class="candidates-title">Candidates</h5>
+                  <select
+                    value={filter}
+                    onChange={handleFilterChange}
+                    class="status-filter"
+                  >
+                    <option value="all">All Status</option>
+                    <option value="pending">Pending</option>
+                    <option value="submitted">Submitted</option>
+                    <option value="approved">Approved</option>
+                    <option value="rejected">Rejected</option>
+                  </select>
                 </div>
+
+                {loading && !selectedCandidate ? (
+                  <p class="loading-text">Loading candidates...</p>
+                ) : (
+                  <div class="candidates-list">
+                    {getFilteredCandidates().length > 0 ? (
+                      getFilteredCandidates().map((candidate) => (
+                        <div
+                          key={candidate._id}
+                          class={`candidate-item ${
+                            selectedCandidate &&
+                            selectedCandidate._id === candidate._id
+                              ? "selected"
+                              : ""
+                          }`}
+                          onClick={() => handleViewDocuments(candidate)}
+                        >
+                          <div class="candidate-details">
+                            <div class="candidate-info">
+                              <h6>{candidate.candidateName}</h6>
+                              <p>{candidate.email}</p>
+                            </div>
+                            <button
+                              onClick={(e) => {
+                                e.stopPropagation();
+                                handleViewDocuments(candidate);
+                              }}
+                              class="view-docs-btn"
+                            >
+                              View Documents
+                            </button>
+                          </div>
+                        </div>
+                      ))
+                    ) : (
+                      <p class="empty-candidates">
+                        No candidates found with the selected filter.
+                      </p>
+                    )}
+                  </div>
+                )}
+              </div>
+
+              <div class="documents-section">
+                {selectedCandidate ? (
+                  <>
+                    <h5>Documents of {selectedCandidate.candidateName}</h5>
+
+                    {loading ? (
+                      <p class="loading-text">Loading documents...</p>
+                    ) : documentDetails && documentDetails.length > 0 ? (
+                      documentDetails.map((statusRecord) => (
+                        <div key={statusRecord._id} class="document-record">
+                          <div class="document-header">
+                            <div class="document-project">
+                              <h5>
+                                Project:{" "}
+                                {statusRecord.visaDocument?.project?.name ||
+                                  "Unknown Project"}
+                              </h5>
+                            </div>
+                            <p class="overall-status">
+                              Overall Status:
+                              <span
+                                class={`status-badge status-${statusRecord.overallStatus.toLowerCase()}`}
+                              >
+                                {statusRecord.overallStatus.toUpperCase()}
+                              </span>
+                            </p>
+                          </div>
+
+                          <div class="document-content">
+                            <h5>Required Document</h5>
+                            <div class="documents-list">
+                              {statusRecord.documentStatuses.map(
+                                (docStatus, index) => {
+                                  const commentKey = `${statusRecord._id}-${docStatus.document}`;
+
+                                  return (
+                                    <div key={index} class="document-item">
+                                      <div class="document-item-header">
+                                        <div class="document-details">
+                                          <h4>{docStatus.document}</h4>
+                                          <div class="document-status">
+                                            <span>Status: </span>
+                                            <span
+                                              class={`status-badge status-${docStatus.status.toLowerCase()}`}
+                                            >
+                                              {docStatus.status.toUpperCase()}
+                                            </span>
+                                          </div>
+
+                                          {docStatus.submittedAt && (
+                                            <p class="document-date">
+                                              Submitted:{" "}
+                                              {new Date(
+                                                docStatus.submittedAt
+                                              ).toLocaleString()}
+                                            </p>
+                                          )}
+
+                                          {docStatus.comments && (
+                                            <div class="document-comments">
+                                              <p>Comments:</p>
+                                              <p class="comment-text">
+                                                {docStatus.comments}
+                                              </p>
+                                            </div>
+                                          )}
+                                        </div>
+
+                                      <div className="document-actions">
+                                            {docStatus.submittedFile && (
+                                              <div className="document-buttons">
+                                                <a
+                                                  href={docStatus.submittedFile}
+                                                  target="_blank"
+                                                  rel="noopener noreferrer"
+                                                  className="view-document-btn"
+                                                >
+                                                  View Document
+                                                </a>
+
+                                                <button
+                                                  onClick={() => handleDownloadDocument(docStatus.submittedFile)}
+                                                  className="download-document-btn"
+                                                >
+                                                  Download Document
+                                                </button>
+                                              </div>
+                                            )}
+                                          </div>
+
+                                      </div>
+
+                                      {docStatus.status === "submitted" && (
+                                        <div class="status-action-section">
+                                          <button
+                                            onClick={() =>
+                                              handleUpdateStatus(
+                                                statusRecord._id,
+                                                docStatus.document,
+                                                "approved",
+                                                commentKey
+                                              )
+                                            }
+                                            class="approve-btn"
+                                          >
+                                            Approve
+                                          </button>
+                                          <button
+                                            onClick={() =>
+                                              handleUpdateStatus(
+                                                statusRecord._id,
+                                                docStatus.document,
+                                                "rejected",
+                                                commentKey
+                                              )
+                                            }
+                                            class="reject-btn"
+                                          >
+                                            Reject
+                                          </button>
+                                          <textarea
+                                            value={comments[commentKey] || ""}
+                                            onChange={(e) =>
+                                              handleCommentChange(
+                                                commentKey,
+                                                e.target.value
+                                              )
+                                            }
+                                            placeholder="Add comment (optional)"
+                                            class="comment-textarea"
+                                          />
+                                        </div>
+                                      )}
+                                    </div>
+                                  );
+                                }
+                              )}
+                            </div>
+                          </div>
+                        </div>
+                      ))
+                    ) : (
+                      <p>No document records found for this candidate.</p>
+                    )}
+                  </>
+                ) : (
+                  <div class="empty-documents">
+                    <p>Select a candidate to view their documents</p>
+                  </div>
+                )}
+              </div>
             </div>
+          </div>
         </div>
-        <ToastContainer />
+      </div>
+      <ToastContainer />
     </div>
   );
 };
 
 export default CandidateDocumentsReview;
 
-
 // CandidateDocumentsReview
-
-

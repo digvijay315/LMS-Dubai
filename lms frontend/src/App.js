@@ -149,6 +149,7 @@ import EmployeeCertificates from './Components/Employee Dashboard/EmployeeCertif
 import CertificateViewer from './Components/Employee Dashboard/CertificateViewer.js';
 import CompanyRegister from './Components/HR Recruitment/CompanyRegister.js';
 import AssignCourse from './Components/Courses/AssignCourse.js';
+import CandidateProfileView from './Components/HR Recruitment/candidate_profile_view.js';
 
 
 
@@ -275,6 +276,8 @@ function App() {
         <Route path='/recruitmentPlan' element={<RecruitmentPlan/>}></Route>
         <Route path='/candidateRegistration' element={<CandidatesRegistration/>}></Route>
         <Route path='/candidateList' element={<CandidateList/>}></Route>
+        <Route path='/candidate-profile-view' element={<CandidateProfileView/>}></Route>
+
         <Route path='/assignCompetencyAssessmentTest' element={<AssignCompetencyTest/>}></Route>
         <Route path='/candidateLogin' element={<CandidateLogin/>}></Route>
         <Route path='/candidateTakeCAT/:catId/:candidateId' element={<TakeCATTest/>}></Route>

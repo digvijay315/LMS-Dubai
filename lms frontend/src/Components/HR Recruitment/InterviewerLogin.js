@@ -571,6 +571,7 @@ const handleInterviewSectionScoreChange = (questionId, field, value) => {
 
       .select-container {
         margin-bottom: 25px;
+        width:100%
       }
 
       .select-container label {
@@ -1194,6 +1195,7 @@ const handleInterviewSectionScoreChange = (questionId, field, value) => {
             {error && <div className="alert alert-error">{error}</div>}
 
             <div className="interviewer-login-form">
+              <div style={{display:"flex",gap:"50px"}}>
               <div className="select-container">
                 <label>Select Project</label>
                 <div className="custom-dropdown" ref={projectDropdownRef}>
@@ -1304,8 +1306,9 @@ const handleInterviewSectionScoreChange = (questionId, field, value) => {
                     )}
                   </div>
                 </div>
+               
               )}
-
+          </div>
               {/* CAT List */}
               {selectedCandidate && (
                 <>
@@ -1762,6 +1765,127 @@ const handleInterviewSectionScoreChange = (questionId, field, value) => {
                 </div>
               </div>
             )}
+
+
+   {/* General Interview Questions */}
+            {selectedCandidate && (
+              <div className="general-interview-questions">
+                <h5 className="section-title">General Interview Questions</h5>
+                <div className="interview-questions">
+                  <div className="question">
+                    <label>Q1. Tell me about yourself</label>
+                    <div className="score-input">
+                      <span>Score:</span>
+                      <select 
+                        value={interviewScores.q1.score} 
+                        onChange={(e) => handleInterviewScoreChange('q1', 'score', Number(e.target.value))}
+                      >
+                        {[0, 1, 2, 3, 4, 5].map(score => (
+                          <option key={score} value={score}>{score}</option>
+                        ))}
+                      </select>
+                    </div>
+                    <div className="comment-input">
+                      <textarea 
+                        placeholder="HR Interviewer comments..."
+                        value={interviewScores.q1.comment}
+                        onChange={(e) => handleInterviewScoreChange('q1', 'comment', e.target.value)}
+                      />
+                    </div>
+                  </div>
+                  
+                  <div className="question">
+                    <label>Q2. Why do you want to work with us?</label>
+                    <div className="score-input">
+                      <span>Score:</span>
+                      <select 
+                        value={interviewScores.q2.score} 
+                        onChange={(e) => handleInterviewScoreChange('q2', 'score', Number(e.target.value))}
+                      >
+                        {[0, 1, 2, 3, 4, 5].map(score => (
+                          <option key={score} value={score}>{score}</option>
+                        ))}
+                      </select>
+                    </div>
+                    <div className="comment-input">
+                      <textarea 
+                        placeholder="HR Interviewer comments..."
+                        value={interviewScores.q2.comment}
+                        onChange={(e) => handleInterviewScoreChange('q2', 'comment', e.target.value)}
+                      />
+                    </div>
+                  </div>
+                  
+                  <div className="question">
+                    <label>Q3. What are your strengths and weaknesses?</label>
+                    <div className="score-input">
+                      <span>Score:</span>
+                      <select 
+                        value={interviewScores.q3.score} 
+                        onChange={(e) => handleInterviewScoreChange('q3', 'score', Number(e.target.value))}
+                      >
+                        {[0, 1, 2, 3, 4, 5].map(score => (
+                          <option key={score} value={score}>{score}</option>
+                        ))}
+                      </select>
+                    </div>
+                    <div className="comment-input">
+                      <textarea 
+                        placeholder="HR Interviewer comments..."
+                        value={interviewScores.q3.comment}
+                        onChange={(e) => handleInterviewScoreChange('q3', 'comment', e.target.value)}
+                      />
+                    </div>
+                  </div>
+                  
+                  <div className="question">
+                    <label>Q4. Where do you see yourself in 5 years?</label>
+                    <div className="score-input">
+                      <span>Score:</span>
+                      <select 
+                        value={interviewScores.q4.score} 
+                        onChange={(e) => handleInterviewScoreChange('q4', 'score', Number(e.target.value))}
+                      >
+                        {[0, 1, 2, 3, 4, 5].map(score => (
+                          <option key={score} value={score}>{score}</option>
+                        ))}
+                      </select>
+                    </div>
+                    <div className="comment-input">
+                      <textarea 
+                        placeholder="HR Interviewer comments..."
+                        value={interviewScores.q4.comment}
+                        onChange={(e) => handleInterviewScoreChange('q4', 'comment', e.target.value)}
+                      />
+                    </div>
+                  </div>
+                  
+                  <div className="question">
+                    <label>Q5. Why should we hire you?</label>
+                    <div className="score-input">
+                      <span>Score:</span>
+                      <select 
+                        value={interviewScores.q5.score} 
+                        onChange={(e) => handleInterviewScoreChange('q5', 'score', Number(e.target.value))}
+                      >
+                        {[0, 1, 2, 3, 4, 5].map(score => (
+                          <option key={score} value={score}>{score}</option>
+                        ))}
+                      </select>
+                    </div>
+                    <div className="comment-input">
+                      <textarea 
+                        placeholder="HR Interviewer comments..."
+                        value={interviewScores.q5.comment}
+                        onChange={(e) => handleInterviewScoreChange('q5', 'comment', e.target.value)}
+                      />
+                    </div>
+                  </div>
+                </div>
+              </div>
+            )}
+
+
 
             {/* Recommendation Section */}
             {selectedCandidate && (
