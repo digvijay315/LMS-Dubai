@@ -283,6 +283,7 @@ useEffect(() => {
     }
   };
 
+
   // Handle file change
   const handleFileChange = (e) => {
     setCvFile(e.target.files[0]);

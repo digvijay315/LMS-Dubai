@@ -17,21 +17,10 @@ function Sidebar() {
     }, 2000);
   };
 
-  const courseCategoryMenu = [
-    { label: 'All Course Category', link: '/AllCourse' },
-    { label: 'Create Course Category', link: '/createCourse' },
-  ];
 
   const courseManageMenu = [
-    {
-     // label: 'Subject',
-      //subMenu: [
-       // { label: 'All Subject List', link: '/AllSubject' },
-       // { label: 'Create New Subject', link: '/createSubject' },
-    //  ],
-    },
-   // { label: 'Tag', link: '/tagCourse' },
-    //{ label: 'Label', link: '/labelCourse' },
+
+
     {
       label: 'Course',
       subMenu: [
@@ -97,6 +86,15 @@ function Sidebar() {
     { label: 'RFT Pending for Approva', link: '/pendingtrf'},
     { label: 'Create Training Budget', link: '/createTrainingBudget'},
     { label: 'Service Provider Register', link: '/serviceProverRegistration'},
+  ]
+
+   const configuration = [
+    { label: 'Training Type', link: '/configuration-training-type'},
+    { label: 'Training Category', link: '/configuration-training-category'},
+    { label: 'Region', link: '/configuration-region'},
+    { label: 'Training Name', link: '/configuration-training-name'},
+    { label: 'Training Code', link: '/configuration-training-code'},
+    // { label: 'Service Provider Register', link: '/serviceProverRegistration'},
   ]
 
   const assignCompetency = [
@@ -277,6 +275,10 @@ ul li {
               
                               
               {/* Add other DropdownMenu items similarly */}
+                <div className='dash-options'>
+                <Assessment/>
+                <DropdownMenu title="Configuration" items={configuration} />
+              </div>
             </div>
           </div>
           <div className="logout-section">

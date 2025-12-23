@@ -150,6 +150,12 @@ import CertificateViewer from './Components/Employee Dashboard/CertificateViewer
 import CompanyRegister from './Components/HR Recruitment/CompanyRegister.js';
 import AssignCourse from './Components/Courses/AssignCourse.js';
 import CandidateProfileView from './Components/HR Recruitment/candidate_profile_view.js';
+import TrainingType from './Components/Configuration/training_type.js';
+import TrainingCategory from './Components/Configuration/training_category.js';
+import Region from './Components/Configuration/region.js';
+import TrainingName from './Components/Configuration/training_name.js';
+import TrainingCode from './Components/Configuration/training_code.js';
+import Project from './Components/Configuration/project.js';
 
 
 
@@ -301,6 +307,13 @@ function App() {
         <Route path='/conductOJT' element={<ConductOJT/>}></Route>
         <Route path='/conductOJA' element={<ConductOJA/>}></Route>
         <Route path='/conductINA' element={<ConductINA/>}></Route>
+
+        <Route path='/configuration-training-type' element={<TrainingType/>}></Route>
+        <Route path='/configuration-training-category' element={<TrainingCategory/>}></Route>
+        <Route path='/configuration-region' element={<Region/>}></Route>
+        <Route path='/configuration-training-name' element={<TrainingName/>}></Route>
+        <Route path='/configuration-training-code' element={<TrainingCode/>}></Route>
+        <Route path='/configuration-project' element={<Project/>}></Route>
 
 
        

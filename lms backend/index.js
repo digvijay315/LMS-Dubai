@@ -39,6 +39,8 @@ app.use('/api', catResponseRoutes);
 
 app.use('/api/questions', require('./Routes/admin'));
 
+app.use('/api/lookup', require('./Routes/lookup'));
+
 app.use('/api/attendance', attendanceRoutes);
 
 app.get('/', (req, res) => {
